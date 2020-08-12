@@ -5,6 +5,8 @@ jobs:
     name: windows-latest
     runs-on: windows-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Install Flubu
       run: dotnet tool install --global FlubuCore.Tool --version 5.1.8
     - name: buildVersion
@@ -20,6 +22,8 @@ jobs:
     name: ubuntu-latest
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Install Flubu
       run: dotnet tool install --global FlubuCore.Tool --version 5.1.8
     - name: buildVersion
@@ -35,6 +39,8 @@ jobs:
     name: macos-latest
     runs-on: macos-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Install Flubu
       run: dotnet tool install --global FlubuCore.Tool --version 5.1.8
     - name: buildVersion
