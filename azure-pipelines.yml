@@ -7,10 +7,13 @@ jobs:
     displayName: Install flubu
   - script: flubu buildVersion --nd
     displayName: buildVersion
+    workingDirectory: src
   - script: flubu compile --nd
     displayName: compile
+    workingDirectory: src
   - script: flubu test --nd
     displayName: test
+    workingDirectory: src
 - job: ubuntu_latest
   pool:
     vmimage: ubuntu-latest
@@ -19,10 +22,13 @@ jobs:
     displayName: Install flubu
   - script: flubu buildVersion --nd
     displayName: buildVersion
+    workingDirectory: src
   - script: flubu compile --nd
     displayName: compile
+    workingDirectory: src
   - script: flubu test --nd
     displayName: test
+    workingDirectory: src
 - job: macOs_latest
   pool:
     vmimage: macOs-latest
@@ -31,7 +37,10 @@ jobs:
     displayName: Install flubu
   - script: flubu buildVersion --nd
     displayName: buildVersion
+    workingDirectory: src
   - script: flubu compile --nd
     displayName: compile
+    workingDirectory: src
   - script: flubu test --nd
     displayName: test
+    workingDirectory: src
