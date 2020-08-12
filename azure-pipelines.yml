@@ -1,69 +1,37 @@
-variables:
-  flubuVersion: 5.1.8
-
-jobs:    
-
-- job: Windows
+jobs:
+- job: windows_latest
   pool:
-    vmImage: 'windows-latest'
-  
+    vmimage: windows-latest
   steps:
-
-  - task: DotNetCoreInstaller@1
-    displayName: install Sdk
-    inputs:
-      version: '3.1.100'      
-
   - script: dotnet tool install --global FlubuCore.Tool --version 5.1.8
-    displayName: 'install flubu'
-
-  - script: flubu compile
-    displayName: Compile
-    workingDirectory: src
-
-  - script: flubu test
-    displayName: Tests
-    workingDirectory: src
-
-- job: Ubuntu
+    displayName: Install flubu
+  - script: flubu buildVersion --nd
+    displayName: buildVersion
+  - script: flubu compile --nd
+    displayName: compile
+  - script: flubu test --nd
+    displayName: test
+- job: ubuntu_latest
   pool:
-    vmImage: 'ubuntu-latest'
-  
+    vmimage: ubuntu-latest
   steps:
-
-  - task: DotNetCoreInstaller@1
-    displayName: install Sdk
-    inputs:
-      version: '3.1.100'      
-
   - script: dotnet tool install --global FlubuCore.Tool --version 5.1.8
-    displayName: 'install flubu'
-
-  - script: flubu compile.linux
-    displayName: Compile
-    workingDirectory: src
-
-  - script: flubu test.linux
-    displayName: Tests
-    workingDirectory: src
-- job: MacOS
+    displayName: Install flubu
+  - script: flubu buildVersion --nd
+    displayName: buildVersion
+  - script: flubu compile --nd
+    displayName: compile
+  - script: flubu test --nd
+    displayName: test
+- job: macOs_latest
   pool:
-    vmImage: 'macOS-latest'
-  
+    vmimage: macOs-latest
   steps:
-
-  - task: DotNetCoreInstaller@1
-    displayName: install Sdk
-    inputs:
-      version: '3.1.100'      
-
   - script: dotnet tool install --global FlubuCore.Tool --version 5.1.8
-    displayName: 'install flubu'
-
-  - script: flubu compile.linux
-    displayName: Compile
-    workingDirectory: src
-
-  - script: flubu test.linux
-    displayName: Tests
-    workingDirectory: src
+    displayName: Install flubu
+  - script: flubu buildVersion --nd
+    displayName: buildVersion
+  - script: flubu compile --nd
+    displayName: compile
+  - script: flubu test --nd
+    displayName: test
